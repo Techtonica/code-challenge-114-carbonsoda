@@ -35,8 +35,27 @@
 // // [1,2,3,4,5,6,7]
 // ```
 
+// Recursive flattener
 function flatten(array){
-    // your code here
+  if(! Array.isArray(array)){
+    return array;
+  }
+  let flat = array.reduce((accum, currVal) =>
+    accum.concat(flatten(currVal)), []);
+  return flat;
 }
+
+// // This one also works, but is complex + hard to read
+// function flatter(inputArray) {
+//   // formats each element in array  
+//   let flatmethod = function(elem){
+//     return Array.isArray(elem) 
+//     ? elem.flat(Infinity) // flatten any possible subarrays
+//     : elem;
+//   };
+//   let flat = inputArray.reduce((accum, currVal) =>
+//     accum.concat(flatmethod(currVal)), []);
+//   return flat;
+// }
 
 module.exports = flatten;
